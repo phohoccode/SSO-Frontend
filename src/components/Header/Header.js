@@ -3,14 +3,19 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useSelector } from "react-redux";
 
 function Header() {
+    const user = useSelector(state => state.account.userInfo)
 
     const handleLogin = () => {
-        window.location.href = 
+        window.location.href =
             `${process.env.REACT_APP_BACKEND_SSO}?serviceURL=${process.env.REACT_APP_SERVICE_URL}`
     }
 
+    const handleLogout = () => {
+
+    }
 
     return (
         <>
@@ -23,9 +28,18 @@ function Header() {
                             <NavLink className='nav-link' to='/'>Home</NavLink>
                             <NavLink className='nav-link' to='/About'>About</NavLink>
                         </Nav>
+
+                        {(user && user.access_token) &&
+                            <Nav>
+                                <Nav.Link>Xin chào! {user.username}</Nav.Link>
+                            </Nav>
+                        }
                         <Nav>
                             <NavDropdown title="Setting" id="basic-nav-dropdown">
-                                <NavDropdown.Item onClick={() => handleLogin()}>Login</NavDropdown.Item>
+                                {user && user.access_token ?
+                                    <NavDropdown.Item onClick={() => handleLogout()}>Đăng xuất</NavDropdown.Item> :
+                                    <NavDropdown.Item onClick={() => handleLogin()}>Đăng nhập</NavDropdown.Item>
+                                }
                             </NavDropdown>
                         </Nav>
                     </Navbar.Collapse>

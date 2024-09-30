@@ -9,12 +9,6 @@ function App() {
     return (
         <div className="App">
             <Header />
-
-            <div>Count: {count}</div>
-
-            <button onClick={() => dispatch(increaseCounter())}>Increase Count</button>
-
-            <button onClick={() => dispatch(decreaseCounter())}>Decrease Count</button>
         </div>
     );
 }
