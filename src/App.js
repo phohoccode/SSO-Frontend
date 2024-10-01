@@ -1,14 +1,27 @@
 import { useDispatch, useSelector } from "react-redux";
 import Header from "./components/Header/Header";
-import { increaseCounter, decreaseCounter } from "./redux/action/counterAction";
+import { useEffect } from "react";
+import { doGetAccount } from "./redux/action/accountAction";
+import { ScaleLoader } from 'react-spinners'
+
 
 function App() {
     const dispatch = useDispatch()
-    const count = useSelector(state => state.counter.count)
+    const user = useSelector(state => state.account.userInfo)
+    const isLoading = useSelector(state => state.account.isLoading)
+
+    useEffect(() => {
+        (user && !user.access_token) && dispatch(doGetAccount())
+    }, [])
 
     return (
-        <div className="App">
-            <Header />
+        <div className="">
+            {isLoading &&
+                <div className="d-flex align-items-center justify-content-center min-vh-100">
+                    <ScaleLoader />
+                </div>
+            }
+            {!isLoading && <Header />}
         </div>
     );
 }

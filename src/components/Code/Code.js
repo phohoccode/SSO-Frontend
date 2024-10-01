@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
-import axios from '../../custom/axios'
 import { doLogin } from "../../redux/action/accountAction";
 
 function Code(props) {
@@ -32,7 +31,7 @@ function Code(props) {
             {message &&
                 <div>
                     <span>{message} -
-                        <a href={`${process.env.REACT_APP_BACKEND_SSO}?serviceURL=${process.env.REACT_APP_SERVICE_URL}`}>Đăng nhập</a>
+                        <a href={`${process.env.REACT_APP_BACKEND_SSO_LOGIN}?serviceURL=${process.env.REACT_APP_SERVICE_URL}`}>Đăng nhập</a>
                     </span>
                 </div>
             }
