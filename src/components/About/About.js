@@ -1,11 +1,11 @@
-
+import WeatherState from './WeatherState';
 
 function About() {
+
     return (
-        <>
-            About
-        </>
-    );
+        <WeatherState/>
+    )
+
 }
 
 export default About;

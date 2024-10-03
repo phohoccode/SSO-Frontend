@@ -3,6 +3,7 @@ import Header from "./components/Header/Header";
 import { useEffect } from "react";
 import { doGetAccount } from "./redux/action/accountAction";
 import { ScaleLoader } from 'react-spinners'
+import axios from "./custom/axios";
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         (user && !user.access_token) && dispatch(doGetAccount())
     }, [])
 
+   
     return (
         <div className="">
             {isLoading &&

@@ -13,7 +13,7 @@ function Header() {
 
     const handleLogin = () => {
         window.location.href =
-            `${process.env.REACT_APP_BACKEND_SSO_LOGIN}?serviceURL=${process.env.REACT_APP_SERVICE_URL}`
+            `${process.env.REACT_APP_BACKEND_SSO_LOGIN}?serviceURL=${process.env.REACT_APP_CURRENT_PROJECT_URL}`
     }
 
     const handleLogout = () => {
@@ -35,7 +35,7 @@ function Header() {
 
                         {(user && user.access_token) &&
                             <Nav>
-                                <Nav.Link>Xin chào! {user.username}</Nav.Link>
+                                <Nav.Link>Xin chào! {user.email}</Nav.Link>
                             </Nav>
                         }
                         <Nav>
