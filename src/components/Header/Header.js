@@ -29,22 +29,20 @@ function Header() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <NavLink className='nav-link' to='/'>Home</NavLink>
-                            <NavLink className='nav-link' to='/About'>About</NavLink>
+                            <NavLink className='nav-link' to='/'>Trang chủ</NavLink>
+                            <NavLink className='nav-link' to='/weather'>Thời tiết</NavLink>
                         </Nav>
 
                         {(user && user.access_token) &&
                             <Nav>
-                                <Nav.Link>Xin chào! {user.email}</Nav.Link>
+                                <Nav.Item>Xin chào! {user.email} | </Nav.Item> 
                             </Nav>
                         }
                         <Nav>
-                            <NavDropdown title="Setting" id="basic-nav-dropdown">
-                                {user && user.access_token ?
-                                    <NavDropdown.Item onClick={() => handleLogout()}>Đăng xuất</NavDropdown.Item> :
-                                    <NavDropdown.Item onClick={() => handleLogin()}>Đăng nhập</NavDropdown.Item>
-                                }
-                            </NavDropdown>
+                            {user && user.access_token ?
+                                <Nav.Link onClick={() => handleLogout()}>Đăng xuất</Nav.Link> :
+                                <Nav.Link onClick={() => handleLogin()}>Đăng nhập</Nav.Link>
+                            }
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

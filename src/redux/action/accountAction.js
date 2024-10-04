@@ -23,7 +23,7 @@ export const doLogin = (ssoToken) => {
             dispatch({ type: USER_LOGIN_SUCCESS, user: response.DT })
         } else {
             dispatch({ type: USER_LOGIN_FAILED, error: response.EM })
-            
+
         }
     }
 }
@@ -57,8 +57,6 @@ export const doGetAccount = () => {
             dispatch({ type: USER_LOGIN_SUCCESS, user: response.DT })
         } else {
             dispatch({ type: USER_LOGIN_FAILED, error: response.EM })
-            window.location.href =
-                `${process.env.REACT_APP_BACKEND_SSO_LOGIN}?serviceURL=${process.env.REACT_APP_CURRENT_PROJECT_URL}`
         }
     }
 }

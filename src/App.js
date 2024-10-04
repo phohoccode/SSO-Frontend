@@ -12,6 +12,9 @@ function App() {
     const isLoading = useSelector(state => state.account.isLoading)
 
     useEffect(() => {
+        console.log(window.location)
+        if (window.location.pathname === '/') return 
+
         (user && !user.access_token) && dispatch(doGetAccount())
     }, [])
 
